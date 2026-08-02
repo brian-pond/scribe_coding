@@ -28,7 +28,7 @@ This scaffolding was not designed top-down from the blog post. It was reverse-en
 
 | Project | What it contributed |
 |---|---|
-| `~/projects/python/btu_v2` | Earliest mature instance: numbered requirements + technical trees, a documentation-authority map with per-topic ownership and reading orders. |
+| `~/projects/python/btu_v2` | Earliest mature instance: numbered requirements + technical trees, a documentation-authority map with per-topic ownership and reading orders, a `docs/design-discussions/` home for informal write-ups (independently converged on the same pattern lifescientific also produced), and the ADR stub-on-retirement convention. |
 | `~/projects/python/cofferdam` | Small solo library. Tight ground-rules doc, `BR-<AREA>-NNN` citation discipline, a "definition of done" checklist, an ADR-per-decision index. |
 | `~/projects/python/dbconform` | Minimal viable version: just 00-overview / 01-functional / 02-non-functional plus a CHANGELOG. Proof that the pattern scales down. |
 | `~/projects/job_aggregator` | Personal tool; numbered requirements + technical docs, conventions pushed into `.cursor/rules/` instead of a plain README. |
@@ -65,8 +65,10 @@ Then, in the new project:
 | A documentation-authority map with reading orders | Single owner per topic; stops parallel, drifting summaries of the same rule. |
 | ADRs for consequential decisions, lighter decision records for everything else | Not every decision earns a full alternatives-considered writeup. |
 | Status header (`exploratory`/`authoritative`/`archived`/`deliverable`) on every doc | Tells a reader — human or AI — how much authority to assign a file at a glance. |
-| An explicit open-questions mechanism | Converts "ask, don't assume" from an instruction into a trackable, durable artifact. |
+| A unified `open/` home for live queues — `OPEN_QUESTIONS.md`, `OPEN_DECISIONS.md`, `OPEN_WORK.md` | Converts "ask, don't assume" from an instruction into trackable, durable artifacts, and groups them together since none of them fit the always-on/authority/deep-working-doc split — they're short, high-churn, and action-oriented. |
 | Archive discipline: "don't load for active work unless history is needed" | Keeps agent context from being drowned by superseded material that still needs to exist somewhere. |
+| A `discussions/` home for informal write-ups | Gives exploratory notes, comparisons, and incident write-ups a fixed address so they don't litter requirements docs, commit messages, or chat history. Entries don't need to be cross-linked from anywhere else to earn a place there. |
+| ADR stub-on-retirement | When an ADR is superseded, its body moves to `archive/` but a stub stays at the original path pointing to current authority — inbound links keep resolving and nobody mistakes a retired decision for current behavior. |
 
 ## Patterns To Adopt Only When The Project Needs Them
 
@@ -77,10 +79,12 @@ These showed up in specific projects, not all of them — pull them in deliberat
 | `workspace/` vs `deliverables/` boundary | lifescientific | The project has a private working area and a separate audience-facing publication boundary (e.g. client consulting). |
 | Workspace-local requirement IDs vs external/team IDs with a mapping table | lifescientific | You must start design/development before a broader team's requirements baseline is stable. |
 | `CURRENT_CONTEXT.md` session router | data-migration-etl | The project has enough moving parts that "where do I even start reading" is itself a recurring question. |
-| `OPEN_DECISIONS.md` literal queue | data-migration-etl | Decisions need explicit sign-off before implementation proceeds, and that approval must be reconstructable later, not just remembered from chat. |
 | `docs_check.py` hygiene linter | data-migration-etl | Documentation volume is high enough that broken links and word-count sprawl become a real risk. |
-| Fit-gap / design-discussions / source-extraction trees | lifescientific | The project involves evaluating a platform's fit against requirements (ERP implementations, vendor selection). |
+| Fit-gap / source-extraction trees | lifescientific | The project involves evaluating a platform's fit against requirements (ERP implementations, vendor selection). |
+| `docs/user/` operator/end-user doc tree | btu_v2 | The project has an end-user or operator-facing UI/CLI audience distinct from developers — thin, task-oriented pages, no requirement IDs. |
 
 ## Mutable Methodology
 
 Scribe Coding is a working baseline, not a fixed template. Refine it when repeated friction, ambiguity, or documentation drift reveals a better pattern — the lifescientific implementation-index split is a direct example of this happening mid-project. When a Scribe Coding improvement is discovered on a specific project, record it there first; only bring the reusable, non-client-specific idea back into this directory.
+
+Dated log of specific scaffolding changes and their sourcing: [CHANGELOG.md](CHANGELOG.md).

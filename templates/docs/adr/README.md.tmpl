@@ -24,3 +24,13 @@ Promote a candidate into an ADR when at least one of these is true:
 - multiple reasonable options exist
 - the decision crosses module or system boundaries
 - the decision will be hard to reverse after implementation begins
+
+## Deleting An ADR
+
+If review shows an ADR never actually recorded a decision — it duplicates the ground rules, or the decision it describes is already fully specified elsewhere — delete it rather than leaving it as clutter. Note the deletion and the reason in this index or the CHANGELOG so the missing number isn't mistaken for an accident.
+
+## Retiring An ADR
+
+When an ADR is fully superseded, move its body to [../archive/](../archive/) and leave a short stub at the original path pointing to the current authority document and the archive copy. This keeps existing inbound links resolving instead of breaking, and stops a reader from mistaking a retired decision for current behavior.
+
+Update this index's `Status` column to `superseded`, linking to whatever replaced it.

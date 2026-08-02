@@ -4,7 +4,7 @@ This project follows **Scribe Coding** (document-driven AI development): https:/
 
 ## The One Rule
 
-Docs precede code. If a behavior is not described in `docs/`, it is not implemented. If a requirement is ambiguous, check `docs/requirements/04-open-questions.md` — do not infer behavior from an unstated preference. If the question is new, add it there and ask the user before writing code.
+Docs precede code. If a behavior is not described in `docs/`, it is not implemented. If a requirement is ambiguous, check `open/OPEN_QUESTIONS.md` — do not infer behavior from an unstated preference. If the question is new, add it there and ask the user before writing code.
 
 ## Before Any Task
 
@@ -15,19 +15,22 @@ Docs precede code. If a behavior is not described in `docs/`, it is not implemen
 
 ## Coding Standards
 
+Naming conventions, lint/format tooling, design patterns, and library choices live in `docs/technical/00-coding-standards.md`, not here. This section only covers requirement traceability.
+
 - Cite `{{ID_PREFIX}}-<AREA>-NNN` identifiers in docstrings and test names for every non-trivial rule.
-- Requirement IDs are internal. They never appear in user-facing text: CLI `--help`, error messages, README, USAGE. When tempted to cite an ID in user-facing text, state the reason instead — the reason tells the user something; the ID tells them nothing.
+- Requirement IDs are internal — see `docs/requirements/README.md` for where they may and may not appear.
 - Update the relevant requirement, technical, or decision document in the same change that alters behavior, scope, or design.
 - Record consequential decisions in `docs/adr/`; lighter, easily-reversible decisions in `decisions/`.
+- Record completion judgments in `docs/technical/05-implementation-index.md`'s `Completion Judgment` column the moment they're reached — see that doc for what counts as a judgment and when to record it, including sessions with no code change.
 
 ## When Something Is Ambiguous
 
-1. Check `docs/requirements/04-open-questions.md` and `OPEN_DECISIONS.md` — the question may already be tracked.
+1. Check `open/OPEN_QUESTIONS.md` and `open/OPEN_DECISIONS.md` — the question may already be tracked.
 2. If unresolved, add it and ask the user. Do not implement speculative behavior while waiting for an answer.
 
 ## Documentation Hygiene
 
-Before creating a new Markdown document, ask whether the material belongs in an existing owner document, an index, a decision record, or `docs/archive/`. Follow `docs/technical/01-documentation-conventions.md` for status headers and sprawl control. Run `tools/docs_check.py` before considering a documentation change complete.
+Follow `docs/technical/01-documentation-conventions.md` for status headers and sprawl control before creating a new Markdown document. Run `tools/docs_check.py` before considering a documentation change complete.
 
 ## Mutable Methodology
 

@@ -22,6 +22,8 @@ Write each rule once in its owner document. Other documents link to the owner or
 | Technical | [technical/](.) | Implementation/configuration/operations details |
 | ADRs | [adr/](../adr/) | Consequential decisions and rationale |
 | Decisions | [../../decisions/](../../decisions/) | Lighter-weight dated decisions |
+| Discussions | [discussions/](../discussions/) | Informal write-ups; not authoritative, not required reading |
+| Open | [../../open/](../../open/) | Live queues/trackers: open questions, decisions, work |
 | Archive | [archive/](../archive/) | Historical only |
 
 ## Authority By Topic
@@ -31,10 +33,12 @@ Write each rule once in its owner document. Other documents link to the owner or
 | Project overview | [requirements/00-overview.md](../requirements/00-overview.md) |
 | Requirements index and identifiers | [requirements/README.md](../requirements/README.md) |
 | Requirement changes | [requirements/CHANGELOG.md](../requirements/CHANGELOG.md) |
-| Open discovery/validation questions | [requirements/04-open-questions.md](../requirements/04-open-questions.md) |
-| Pending decisions needing approval | [../../OPEN_DECISIONS.md](../../OPEN_DECISIONS.md) |
+| Open discovery/validation questions | [../../open/OPEN_QUESTIONS.md](../../open/OPEN_QUESTIONS.md) |
+| Pending decisions needing approval | [../../open/OPEN_DECISIONS.md](../../open/OPEN_DECISIONS.md) |
+| Outstanding implementation/cleanup work | [../../open/OPEN_WORK.md](../../open/OPEN_WORK.md) |
 | Consequential architecture/process decisions | [adr/](../adr/) |
 | Lightweight dated decisions | [../../decisions/](../../decisions/) |
+| Coding standards, naming, lint/format tooling, design patterns | [00-coding-standards.md](00-coding-standards.md) |
 | Documentation conventions and Markdown headers | [01-documentation-conventions.md](01-documentation-conventions.md) |
 | Current implementation inventory | [05-implementation-index.md](05-implementation-index.md) |
 | Software release history | [../../CHANGELOG.md](../../CHANGELOG.md) |
@@ -51,7 +55,7 @@ Write each rule once in its owner document. Other documents link to the owner or
 
 1. `CURRENT_CONTEXT.md`, when not already loaded
 2. [technical/README.md](README.md)
-3. [05-implementation-index.md](05-implementation-index.md)
+3. [05-implementation-index.md](05-implementation-index.md) and [../../open/OPEN_WORK.md](../../open/OPEN_WORK.md)
 4. Relevant owner documents named by the implementation index
 5. Named code locations and targeted searches
 
@@ -73,8 +77,12 @@ Write each rule once in its owner document. Other documents link to the owner or
 
 ## Post-Implementation Doc Hygiene
 
-After meaningful implementation, configuration, or documentation work, ask: does any referenced document describe intent rather than reality? If yes, update the owner document before closing the task.
+After meaningful implementation, configuration, documentation work, or a completion judgment reached through review or discussion, ask: does any referenced document describe intent rather than reality? If yes, update the owner document before closing the task.
 
 ## Archive Rule
 
 Do not load [archive/](../archive/) for active work unless historical context is explicitly needed.
+
+## Superseded ADRs
+
+When an ADR is fully retired, move its body to [archive/](../archive/) and leave a stub at the original [adr/](../adr/) path pointing to the current authority document and the archive copy, so existing links keep resolving. See [adr/README.md](../adr/README.md).

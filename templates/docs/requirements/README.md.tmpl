@@ -18,33 +18,38 @@ Doc map and reading order: [../technical/25-documentation-authority.md](../techn
 | [01-functional.md](01-functional.md) | Functional / business-rule requirements |
 | [02-non-functional.md](02-non-functional.md) | Security, reliability, performance, operational constraints |
 | [03-glossary.md](03-glossary.md) | Terms and vocabulary |
-| [04-open-questions.md](04-open-questions.md) | Unresolved discovery/validation questions |
 | [CHANGELOG.md](CHANGELOG.md) | Requirements change log |
+
+Unresolved discovery/validation questions live in [../../open/OPEN_QUESTIONS.md](../../open/OPEN_QUESTIONS.md), not in this numbered sequence — they're a live queue, not a settled requirement doc.
 
 ## Identifier Conventions
 
-Requirement IDs use the `{{ID_PREFIX}}-*` namespace.
+The `{{ID_PREFIX}}-*` namespace covers every identifier in the project, not only requirements — this is the canonical registry for all of them, to avoid collisions between requirement, question, decision, and work-item IDs.
 
 Current ID forms:
 
 - `{{ID_PREFIX}}-FUN-NNN`: functional requirement.
 - `{{ID_PREFIX}}-NFR-NNN`: non-functional requirement.
 - `{{ID_PREFIX}}-AC-NNN`: acceptance criterion.
+- `{{ID_PREFIX}}-Q-NNN`: open question, tracked in [../../open/OPEN_QUESTIONS.md](../../open/OPEN_QUESTIONS.md).
+- `{{ID_PREFIX}}-D-NNN`: open decision, tracked in [../../open/OPEN_DECISIONS.md](../../open/OPEN_DECISIONS.md).
+- `{{ID_PREFIX}}-W-NNN`: open work item, tracked in [../../open/OPEN_WORK.md](../../open/OPEN_WORK.md).
 
 Component meanings:
 
 - `{{ID_PREFIX}}`: project namespace; reduces collision risk and makes search/renumbering practical.
 - `FUN` / `NFR`: functional or non-functional requirement.
 - `AC`: acceptance criterion — a testable condition proving a requirement is satisfied.
+- `Q` / `D` / `W`: open question, open decision, or open work item — see `open/`.
 - `NNN`: three-digit, zero-padded sequence number.
 
 Recommended search pattern:
 
 ```regex
-\b{{ID_PREFIX}}-(FUN|NFR|AC)-[0-9]{3}\b
+\b{{ID_PREFIX}}-(FUN|NFR|AC|Q|D|W)-[0-9]{3}\b
 ```
 
-Requirement IDs are internal. They must never appear in user-facing text (CLI help, error messages, README, USAGE) — only in docstrings, comments, tests, commit messages, and `docs/`.
+All `{{ID_PREFIX}}-*` IDs are internal, including `Q`/`D`/`W`. They must never appear in user-facing text (CLI help, error messages, README, USAGE) — only in docstrings, comments, tests, commit messages, and `docs/`. When tempted to cite an ID in user-facing text, state the reason instead — the reason tells the user something; the ID tells them nothing.
 
 ### External / Team IDs
 
@@ -52,4 +57,4 @@ If a broader team maintains separate requirement numbers or ticket IDs, do not f
 
 ## Historical Material
 
-Superseded material belongs in [../archive/](../archive/). Do not load archived material for active work unless history is needed.
+Superseded material belongs in [../archive/](../archive/) — see that doc for load-hygiene guidance.

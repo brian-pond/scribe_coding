@@ -1,0 +1,45 @@
+---
+status: exploratory
+owner: technical
+purpose: Coding standards, naming conventions, lint/format tooling, and chosen design patterns for {{PROJECT_NAME}}.
+---
+
+# Coding Standards
+
+This document owns HOW code is written and enforced. Requirement-ID citation discipline (how code links back to `{{ID_PREFIX}}-*` requirements) is owned by `AGENTS.md` — do not duplicate it here.
+
+## Language / Runtime
+
+- {{language and minimum version}}
+
+## Naming Conventions
+
+- {{module / file naming}}
+- {{function / class / variable naming}}
+- {{test naming}}
+
+## Formatting & Linting
+
+| Tool | Purpose | Command |
+|---|---|---|
+| {{formatter}} | {{what it enforces}} | {{command}} |
+| {{linter}} | {{what it enforces}} | {{command}} |
+| {{type checker}} | {{what it enforces}} | {{command}} |
+
+These must pass before a change is considered done — see `open/OPEN_WORK.md`'s `done` status definition.
+
+## Design Patterns
+
+- {{pattern the project commits to, and why}}
+
+## Libraries & Packages
+
+| Library | Purpose | Rationale |
+|---|---|---|
+| {{library}} | {{what it's used for}} | {{why this one; link an ADR if the choice was consequential}} |
+
+## Engineering Rules
+
+Project-specific hard rules that apply everywhere, not just to one component. Keep this list short — most rules belong in a specific requirement or technical document instead.
+
+- {{rule, e.g. "never log secret values"}}

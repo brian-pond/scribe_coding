@@ -1,0 +1,29 @@
+---
+status: active
+owner: project
+purpose: Central backlog for implementation and cleanup work that is not blocked on a pending decision.
+---
+
+# Open Work
+
+Source-controlled backlog for unfinished implementation, cleanup, and operating work. Work that cannot proceed until the user chooses between options belongs in [OPEN_DECISIONS.md](OPEN_DECISIONS.md) instead.
+
+## Status Values
+
+| Status | Meaning |
+| --- | --- |
+| `open` | Work remains and is not currently blocked. |
+| `blocked` | Work cannot proceed until a named decision, dependency, or condition resolves. |
+| `in_progress` | Work has started and should be completed or deliberately paused. |
+| `done` | The behavior is specified in its owner doc, code cites the relevant `{{ID_PREFIX}}-*` identifier, tests cover it, lint/type checks pass, and a completion judgment has been recorded for the relevant requirement ID(s) in `docs/technical/05-implementation-index.md`'s `Completion Judgment` column. `CHANGELOG.md` is updated. |
+| `deferred` | Intentionally not part of the current scope. |
+
+Sweep `done` rows out on the next cleanup pass — but only after the completion judgment is recorded in `docs/technical/05-implementation-index.md`. This file tracks what's outstanding, not a permanent record of everything ever finished; that record lives in the index instead, and it is never swept.
+
+## Backlog
+
+| ID | Status | Area | Work | Notes / Links |
+| --- | --- | --- | --- | --- |
+| `{{ID_PREFIX}}-W-001` | `open` | {{area}} | {{work}} | {{notes}} |
+
+Current system state by area lives in [../docs/technical/05-implementation-index.md](../docs/technical/05-implementation-index.md); this file tracks the discrete tasks that get you there.
