@@ -1,0 +1,55 @@
+---
+status: authoritative
+owner: requirements
+purpose: Index and identifier conventions for {{PROJECT_NAME}} requirements.
+---
+
+# Requirements
+
+{{PROJECT_NAME}} requirements live in this folder.
+
+Doc map and reading order: [../technical/25-documentation-authority.md](../technical/25-documentation-authority.md).
+
+## Index
+
+| Document | Purpose |
+|---|---|
+| [00-overview.md](00-overview.md) | Project context, goals, scope, non-goals |
+| [01-functional.md](01-functional.md) | Functional / business-rule requirements |
+| [02-non-functional.md](02-non-functional.md) | Security, reliability, performance, operational constraints |
+| [03-glossary.md](03-glossary.md) | Terms and vocabulary |
+| [04-open-questions.md](04-open-questions.md) | Unresolved discovery/validation questions |
+| [CHANGELOG.md](CHANGELOG.md) | Requirements change log |
+
+## Identifier Conventions
+
+Requirement IDs use the `{{ID_PREFIX}}-*` namespace.
+
+Current ID forms:
+
+- `{{ID_PREFIX}}-FUN-NNN`: functional requirement.
+- `{{ID_PREFIX}}-NFR-NNN`: non-functional requirement.
+- `{{ID_PREFIX}}-AC-NNN`: acceptance criterion.
+
+Component meanings:
+
+- `{{ID_PREFIX}}`: project namespace; reduces collision risk and makes search/renumbering practical.
+- `FUN` / `NFR`: functional or non-functional requirement.
+- `AC`: acceptance criterion — a testable condition proving a requirement is satisfied.
+- `NNN`: three-digit, zero-padded sequence number.
+
+Recommended search pattern:
+
+```regex
+\b{{ID_PREFIX}}-(FUN|NFR|AC)-[0-9]{3}\b
+```
+
+Requirement IDs are internal. They must never appear in user-facing text (CLI help, error messages, README, USAGE) — only in docstrings, comments, tests, commit messages, and `docs/`.
+
+### External / Team IDs
+
+If a broader team maintains separate requirement numbers or ticket IDs, do not force this project's IDs to match prematurely. Maintain a mapping table (workspace ID, external ID, source system, relationship type, confidence, notes) instead of renumbering.
+
+## Historical Material
+
+Superseded material belongs in [../archive/](../archive/). Do not load archived material for active work unless history is needed.

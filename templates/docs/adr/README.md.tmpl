@@ -1,0 +1,26 @@
+---
+status: authoritative
+owner: technical
+purpose: Index for architectural decision records in {{PROJECT_NAME}}.
+---
+
+# Architectural Decision Records
+
+Use this folder for consequential decisions that need explicit rationale, considered alternatives, and consequences: choices that would be materially different under a different outcome, that cross module/system boundaries, or that are hard to reverse once implementation begins.
+
+Lighter, easily-reversible decisions belong in [../../decisions/](../../decisions/) instead.
+
+## Index
+
+| ADR | Status | Decision |
+|---|---|---|
+| [0001-example-decision.md](0001-example-decision.md) | proposed | {{one-line decision summary}} |
+
+## Promotion Rule
+
+Promote a candidate into an ADR when at least one of these is true:
+
+- implementation would be materially different depending on the outcome
+- multiple reasonable options exist
+- the decision crosses module or system boundaries
+- the decision will be hard to reverse after implementation begins

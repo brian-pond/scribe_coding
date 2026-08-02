@@ -1,0 +1,34 @@
+# AGENTS.md — {{PROJECT_NAME}}
+
+This project follows **Scribe Coding** (document-driven AI development): https://datahenge.com/blog/document-driven-ai-development/
+
+## The One Rule
+
+Docs precede code. If a behavior is not described in `docs/`, it is not implemented. If a requirement is ambiguous, check `docs/requirements/04-open-questions.md` — do not infer behavior from an unstated preference. If the question is new, add it there and ask the user before writing code.
+
+## Before Any Task
+
+1. Read `CURRENT_CONTEXT.md` first — it routes to the smallest relevant document.
+2. Consult `docs/technical/25-documentation-authority.md` to find which document owns the topic in scope.
+3. Load only the document(s) the index points to. Do not scan the full `docs/` tree by default.
+4. For non-trivial changes, state which `{{ID_PREFIX}}-*` requirement IDs the change implements before writing code.
+
+## Coding Standards
+
+- Cite `{{ID_PREFIX}}-<AREA>-NNN` identifiers in docstrings and test names for every non-trivial rule.
+- Requirement IDs are internal. They never appear in user-facing text: CLI `--help`, error messages, README, USAGE. When tempted to cite an ID in user-facing text, state the reason instead — the reason tells the user something; the ID tells them nothing.
+- Update the relevant requirement, technical, or decision document in the same change that alters behavior, scope, or design.
+- Record consequential decisions in `docs/adr/`; lighter, easily-reversible decisions in `decisions/`.
+
+## When Something Is Ambiguous
+
+1. Check `docs/requirements/04-open-questions.md` and `OPEN_DECISIONS.md` — the question may already be tracked.
+2. If unresolved, add it and ask the user. Do not implement speculative behavior while waiting for an answer.
+
+## Documentation Hygiene
+
+Before creating a new Markdown document, ask whether the material belongs in an existing owner document, an index, a decision record, or `docs/archive/`. Follow `docs/technical/01-documentation-conventions.md` for status headers and sprawl control. Run `tools/docs_check.py` before considering a documentation change complete.
+
+## Mutable Methodology
+
+Scribe Coding is a working baseline, not a fixed template. Refine it when repeated friction reveals a better pattern; note the change in `CHANGELOG.md`.

@@ -1,0 +1,80 @@
+---
+status: authoritative
+owner: technical
+purpose: Maps which {{PROJECT_NAME}} documents own each topic and defines reading order.
+---
+
+# Documentation Authority Map
+
+> Review date: {{DATE}}.
+
+This document defines which project documents own which topics, to prevent duplicated rules, stale parallel summaries, and unnecessary context loading.
+
+## Principle
+
+Write each rule once in its owner document. Other documents link to the owner or carry only a thin audience-specific summary.
+
+## Doc Trees
+
+| Tree | Path | Audience |
+|---|---|---|
+| Requirements | [requirements/](../requirements/) | Implementation and validation source |
+| Technical | [technical/](.) | Implementation/configuration/operations details |
+| ADRs | [adr/](../adr/) | Consequential decisions and rationale |
+| Decisions | [../../decisions/](../../decisions/) | Lighter-weight dated decisions |
+| Archive | [archive/](../archive/) | Historical only |
+
+## Authority By Topic
+
+| Topic | Authority |
+|---|---|
+| Project overview | [requirements/00-overview.md](../requirements/00-overview.md) |
+| Requirements index and identifiers | [requirements/README.md](../requirements/README.md) |
+| Requirement changes | [requirements/CHANGELOG.md](../requirements/CHANGELOG.md) |
+| Open discovery/validation questions | [requirements/04-open-questions.md](../requirements/04-open-questions.md) |
+| Pending decisions needing approval | [../../OPEN_DECISIONS.md](../../OPEN_DECISIONS.md) |
+| Consequential architecture/process decisions | [adr/](../adr/) |
+| Lightweight dated decisions | [../../decisions/](../../decisions/) |
+| Documentation conventions and Markdown headers | [01-documentation-conventions.md](01-documentation-conventions.md) |
+| Current implementation inventory | [05-implementation-index.md](05-implementation-index.md) |
+| Software release history | [../../CHANGELOG.md](../../CHANGELOG.md) |
+
+## Reading Orders
+
+### General Project Work
+
+1. `CURRENT_CONTEXT.md`
+2. [requirements/00-overview.md](../requirements/00-overview.md)
+3. Relevant requirements, technical, or ADR documents
+
+### Implementation Status Or Code Navigation
+
+1. `CURRENT_CONTEXT.md`, when not already loaded
+2. [technical/README.md](README.md)
+3. [05-implementation-index.md](05-implementation-index.md)
+4. Relevant owner documents named by the implementation index
+5. Named code locations and targeted searches
+
+### Requirements Work
+
+1. [requirements/README.md](../requirements/README.md)
+2. Relevant requirement documents
+3. [requirements/CHANGELOG.md](../requirements/CHANGELOG.md) when requirements change
+
+## Changelog Discipline
+
+| Change type | Update |
+|---|---|
+| Requirement or acceptance criterion | [requirements/CHANGELOG.md](../requirements/CHANGELOG.md) |
+| Important implementation or process decision | [../../decisions/](../../decisions/) or an ADR |
+| Documentation ownership or reading order | This file |
+| Current implementation state, code locations, validation commands | [05-implementation-index.md](05-implementation-index.md) |
+| Software release | [../../CHANGELOG.md](../../CHANGELOG.md) |
+
+## Post-Implementation Doc Hygiene
+
+After meaningful implementation, configuration, or documentation work, ask: does any referenced document describe intent rather than reality? If yes, update the owner document before closing the task.
+
+## Archive Rule
+
+Do not load [archive/](../archive/) for active work unless historical context is explicitly needed.

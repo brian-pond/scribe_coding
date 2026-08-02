@@ -1,0 +1,27 @@
+---
+status: active
+owner: project
+purpose: Central queue for decisions that need explicit user approval before becoming durable project behavior.
+---
+
+# Open Decisions
+
+Source-controlled queue for decisions that need the user's input before they become durable project behavior. Do not treat chat-only approval as durable unless it is also reflected here, in a `decisions/` record, or in an ADR.
+
+## Status Values
+
+| Status | Meaning |
+| --- | --- |
+| `needs_user` | User needs to approve, reject, or redirect. |
+| `approved` | User approved; implementation may proceed. |
+| `rejected` | User rejected the decision. |
+| `deferred` | Not required for the current phase. |
+| `implemented` | Approved decision has been implemented. |
+
+## Queue
+
+| ID | Status | Area | Decision Needed | Recommendation | Implementation Target |
+| --- | --- | --- | --- | --- | --- |
+| `EXAMPLE-001` | `needs_user` | {{area}} | {{question}} | {{recommendation}} | {{where this lands once approved}} |
+
+Implemented decisions are indexed in `decisions/README.md` and `docs/adr/README.md`. Keep this file focused on unresolved or explicitly deferred items.

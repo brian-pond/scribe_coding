@@ -1,0 +1,37 @@
+---
+status: authoritative
+owner: technical
+purpose: Current implementation inventory, code locations, validation commands, and known next gaps for {{PROJECT_NAME}}.
+---
+
+# Implementation Index
+
+> Review date: {{DATE}}.
+
+This document answers "what exists in code now, where is it, how is it validated, and what remains open?" It exists to keep current implementation state out of requirements documents. Requirements own what's needed; ADRs and technical docs own architecture and rationale; this index owns inventory and navigation.
+
+This is a navigation index, not a full code audit. When a row becomes central to current work, verify the named code and tests before acting on the row alone.
+
+## Use In Clean Sessions
+
+1. Read `CURRENT_CONTEXT.md` and [technical/README.md](README.md) as needed.
+2. Read this index.
+3. Read the relevant owner document named in the `Owner Docs` column.
+4. Jump to the named code locations and validation commands.
+
+Do not add full current-implementation sections to every requirements or technical document. Add or update rows here instead.
+
+## Implementation Inventory
+
+| Area | Scope | Status | Code Location | Tests / Validation | Owner Docs | Known Next Gap |
+|---|---|---|---|---|---|---|
+| {{area}} | {{scope}} | Planned / Partial / Implemented | {{path}} | {{command}} | {{doc}} | {{gap}} |
+
+## Maintenance Rule
+
+After meaningful implementation or configuration changes, update this index before closing the task when any of the following changed:
+
+- a feature moved from planned to partial or implemented
+- code location changed
+- validation command changed
+- a next gap was closed or replaced by a new blocking gap

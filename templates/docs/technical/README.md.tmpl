@@ -1,0 +1,23 @@
+---
+status: authoritative
+owner: technical
+purpose: Index for {{PROJECT_NAME}} technical implementation documentation.
+---
+
+# Technical Documentation
+
+Requirements describe WHAT the project must accomplish. Technical documents describe HOW implementation, configuration, and operations work. ADRs describe WHY consequential decisions were made.
+
+## Index
+
+| Document | Purpose |
+|---|---|
+| [01-documentation-conventions.md](01-documentation-conventions.md) | Markdown status headers, documentation levels, sprawl control |
+| [05-implementation-index.md](05-implementation-index.md) | Current implementation inventory, code locations, validation commands, known gaps |
+| [25-documentation-authority.md](25-documentation-authority.md) | Documentation ownership, reading order, changelog discipline |
+
+Numbering leaves gaps (01, 05, 25, ...) so new topic documents can be inserted later without renumbering existing ones.
+
+## Implementation Status
+
+Use [05-implementation-index.md](05-implementation-index.md) to answer "what exists in code now?", "where did we leave off?", and "what's the next gap?" Requirements documents should not each grow their own implementation-status section — that duplication goes stale.
