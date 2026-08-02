@@ -37,7 +37,7 @@ Exceptions: `AGENTS.md` / `CLAUDE.md` (operational instruction files read before
 
 ## Sprawl Control
 
-Before creating a new Markdown document, ask whether the material belongs in an existing owner document, an index, a decision record, or `docs/archive/`.
+Before creating a new Markdown document, ask whether the material belongs in an existing owner document, an index, a decision record, `scratch/` (if it's not yet worth keeping), or `docs/archive/`.
 
 Create a new document only when it has a distinct owner, audience, lifecycle, or review path.
 
@@ -49,6 +49,6 @@ Documentation entropy is expected, not a sign of failure. Every requirement chan
 
 Schedule a session dedicated only to documentation review, cleanup, and improvement on a regular cadence, not just when something feels obviously broken. During that kind of session, avoid implementation and avoid introducing new project ideas unless the user explicitly changes the goal.
 
-Review for: missing headers, unclear authority, duplicate content, contradictions, stale claims, missing index links, documents that should be archived, split, or consolidated. Run `tools/docs_check.py` as a first pass.
+Review for: missing headers, unclear authority, duplicate content, contradictions, stale claims, missing index links, documents that should be archived, split, or consolidated. Run `tools/docs_check.py` as a first pass. For prose-heavy documents specifically, consider a Dorwin Analysis pass — see [02-dorwin-analysis-and-hardin-version.md](02-dorwin-analysis-and-hardin-version.md).
 
 Expect a real cleanup to take multiple passes within the same session, not one. A single pass tends to surface problems (a doc that should be split, a rule that should move to a different owner) whose fix creates new small inconsistencies elsewhere — updated links, a changed index, a status that needs to flip. Re-run `tools/docs_check.py` and re-scan after each pass rather than treating the first pass as done; stop when a pass produces no further changes.

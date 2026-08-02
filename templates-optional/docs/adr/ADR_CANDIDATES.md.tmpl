@@ -1,0 +1,31 @@
+---
+status: authoritative
+owner: technical
+purpose: Design-phase backlog for decisions that may become ADRs in {{PROJECT_NAME}}, once framed clearly enough to draft one.
+---
+
+# ADR Candidates
+
+Use this file for consequential decisions that are known to matter but aren't yet framed clearly enough to draft an ADR. This is a step before [../../open/OPEN_DECISIONS.md](../../open/OPEN_DECISIONS.md), which assumes the options are already framed and only needs a yes/no.
+
+This is opt-in — most projects can go straight from a discussion to a drafted ADR and never need a staging area. Copy this file into `docs/adr/` only once undecided architectural questions start accumulating faster than they can be framed.
+
+## Status Values
+
+| Status | Meaning |
+| --- | --- |
+| `Candidate` | Needs framing before an ADR is drafted. |
+| `Proposed` | ADR draft exists but is not accepted. |
+| `Accepted` | Decision is recorded in an accepted ADR. |
+| `Deferred` | Decision is recognized but not ready to make. |
+| `Superseded` | Decision was replaced by a later ADR. |
+
+## Candidate Index
+
+| Candidate | Status | Owner / Decision Group | Blocking Impact | Notes |
+|---|---|---|---|---|
+| {{candidate}} | Candidate | {{who needs to weigh in}} | {{High / Medium / Low}} | {{why this matters and what's still unclear}} |
+
+## Promotion Rule
+
+Promote a candidate into an ADR when it meets the criteria in [README.md](README.md#promotion-rule).

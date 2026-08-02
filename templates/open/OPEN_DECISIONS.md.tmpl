@@ -24,4 +24,4 @@ Source-controlled queue for decisions that need the user's input before they bec
 | --- | --- | --- | --- | --- | --- |
 | `{{ID_PREFIX}}-D-001` | `needs_user` | {{area}} | {{question}} | {{recommendation}} | {{where this lands once approved}} |
 
-Implemented decisions are indexed in `decisions/README.md` and `docs/adr/README.md`. Keep this file focused on unresolved or explicitly deferred items.
+When a decision is approved and implemented, promote it into `decisions/` or `docs/adr/` and record this row's ID in the new record's `origin` field, so a citation made while the decision was still open keeps resolving. Implemented decisions are indexed in `decisions/README.md` and `docs/adr/README.md`. Keep this file focused on unresolved or explicitly deferred items.

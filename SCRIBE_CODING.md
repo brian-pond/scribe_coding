@@ -32,14 +32,15 @@ This scaffolding was not designed top-down from the blog post. It was reverse-en
 | `~/projects/python/cofferdam` | Small solo library. Tight ground-rules doc, `BR-<AREA>-NNN` citation discipline, a "definition of done" checklist, an ADR-per-decision index. |
 | `~/projects/python/dbconform` | Minimal viable version: just 00-overview / 01-functional / 02-non-functional plus a CHANGELOG. Proof that the pattern scales down. |
 | `~/projects/job_aggregator` | Personal tool; numbered requirements + technical docs, conventions pushed into `.cursor/rules/` instead of a plain README, and an explicit declared-rigor rule (`prototype-mindset.mdc`) calibrating how strictly the rest of the methodology applies. |
-| `~/erpnext_projects/datahenge-cairn` | Dual identifier system (`BR-*` requirements vs `ADR-*` decisions) and an explicit, test-enforced rule that internal IDs never reach user-facing text. |
-| `~/clients/lifescientific/erpnext_launch` (`workspace/`) | The most refined instance, built under real deadline pressure. Added the `workspace/` vs `deliverables/` boundary, workspace-local vs external requirement-ID namespaces, and — critically — split "what's needed" from "what currently exists in code" into a dedicated implementation index after topic docs kept describing intent instead of reality. |
+| `~/erpnext_projects/datahenge-cairn` | Dual identifier system (`BR-*` requirements vs `ADR-*` decisions); an explicit, test-enforced (not just prose) rule that internal IDs never reach user-facing text; decisions keep a stable ID across their open-to-closed lifecycle instead of being renumbered on promotion; and a "measured vs reasoned" confidence tag on durable technical findings. |
+| `~/clients/lifescientific/erpnext_launch` (`workspace/`) | The most refined instance, built under real deadline pressure. Added the `workspace/` vs `deliverables/` boundary, workspace-local vs external requirement-ID namespaces, and — critically — split "what's needed" from "what currently exists in code" into a dedicated implementation index after topic docs kept describing intent instead of reality. Also contributed a `scratch/` home for temporary notes, an `ADR_CANDIDATES.md` pre-ADR staging backlog, and the Dorwin Analysis / Hardin Version prose-compression technique. |
 | `~/clients/lifescientific/erpnext_launch/data-migration-etl` | Sibling ETL subproject. Added `CURRENT_CONTEXT.md` as a session router, `OPEN_DECISIONS.md` as a literal pending-approval queue (so "ask, don't assume" has a durable home instead of living only in chat), and a `docs_check.py` documentation-hygiene linter. |
 
 ## What's In This Directory
 
 - `SCRIBE_CODING.md` — this file.
 - `templates/` — the documentation tree to stamp into a new project.
+- `templates-optional/` — patterns most projects don't need; mirrors `templates/`'s structure but is never swept by the init script. Copy a file in by hand, at the matching path, when the project actually needs it.
 - `scripts/init_scribe_coding_project.sh` — copies `templates/` into a target directory, substituting project name, requirement-ID prefix, and today's date.
 - `tools/docs_check.py` — a generalized documentation-hygiene linter (broken links, doc sprawl, decision-index drift, leaked local paths). Run it against a project's docs tree.
 
@@ -69,6 +70,8 @@ Then, in the new project:
 | Archive discipline: "don't load for active work unless history is needed" | Keeps agent context from being drowned by superseded material that still needs to exist somewhere. |
 | A `discussions/` home for informal write-ups | Gives exploratory notes, comparisons, and incident write-ups a fixed address so they don't litter requirements docs, commit messages, or chat history. Entries don't need to be cross-linked from anywhere else to earn a place there. |
 | ADR stub-on-retirement | When an ADR is superseded, its body moves to `archive/` but a stub stays at the original path pointing to current authority — inbound links keep resolving and nobody mistakes a retired decision for current behavior. |
+| A `scratch/` home for temporary notes | Gives working notes that aren't yet worth keeping a place to live other than a permanent doc — promote or delete, never authoritative. Distinct from `discussions/`, which is for material worth keeping indefinitely. |
+| Dorwin Analysis / Hardin Version compression technique | A named, optional pass for prose-heavy documents: strip filler, hedging, and ceremony; keep only concrete claims, obligations, decisions, constraints, and open questions. Documented so the AI recognizes the trigger phrase even in a fresh session. |
 
 ## Patterns To Adopt Only When The Project Needs Them
 
@@ -82,6 +85,7 @@ These showed up in specific projects, not all of them — pull them in deliberat
 | `docs_check.py` hygiene linter | data-migration-etl | Documentation volume is high enough that broken links and word-count sprawl become a real risk. |
 | Fit-gap / source-extraction trees | lifescientific | The project involves evaluating a platform's fit against requirements (ERP implementations, vendor selection). |
 | `docs/user/` operator/end-user doc tree | btu_v2 | The project has an end-user or operator-facing UI/CLI audience distinct from developers — thin, task-oriented pages, no requirement IDs. |
+| `ADR_CANDIDATES.md` design-phase backlog (`templates-optional/docs/adr/`) | lifescientific | Undecided architectural questions are accumulating faster than they can be framed as ADRs — a staging area before `open/OPEN_DECISIONS.md`. |
 
 ## Mutable Methodology
 

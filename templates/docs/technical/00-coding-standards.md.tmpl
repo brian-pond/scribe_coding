@@ -28,6 +28,14 @@ This document owns HOW code is written and enforced. Requirement-ID citation dis
 
 These must pass before a change is considered done — see `open/OPEN_WORK.md`'s `done` status definition.
 
+## Requirement-ID Leakage Guard
+
+The "IDs never in user-facing text" rule (`docs/requirements/README.md`) lives only in prose until something enforces it — and prose-only rules get violated silently (e.g. an ID leaking into CLI `--help` text or an error message) until a human happens to spot the output. Recommended: an automated test that scans every non-docstring, non-comment string literal in the source tree for `{{ID_PREFIX}}-*` and fails if one is found. Also write a second test proving the guard can actually fail — plant a known violation and assert it's caught; a guard that cannot fail is worse than no guard.
+
+The specific implementation is language-dependent. Worked example (Python, AST-based): parse each source file, collect every `ast.Constant` string node that is not a module/class/function docstring, and regex-match `{{ID_PREFIX}}-*` against the rest — comments are excluded automatically since they never appear in the AST.
+
+{{Add the project's actual guard here once the language/tooling is chosen, or delete this section if not applicable.}}
+
 ## Design Patterns
 
 - {{pattern the project commits to, and why}}
