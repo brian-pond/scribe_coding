@@ -1,0 +1,40 @@
+---
+status: authoritative
+owner: technical
+purpose: Index for architectural decision records in {{PROJECT_NAME}}.
+---
+
+# Architectural Decision Records
+
+Use this folder for consequential decisions that need explicit rationale, considered alternatives, and consequences: choices that would be materially different under a different outcome, that cross module/system boundaries, or that are hard to reverse once implementation begins.
+
+Lighter, easily-reversible decisions belong in [../../decisions/](../../decisions/) instead.
+
+If an ADR started life in [../../open/OPEN_DECISIONS.md](../../open/OPEN_DECISIONS.md), carry its ID into the new file's `origin` field so a citation made while it was open still resolves.
+
+If undecided architectural questions start accumulating faster than they can be framed as ADRs, copy `templates-optional/docs/adr/ADR_CANDIDATES.md.tmpl` in as a design-phase backlog — most projects won't need it.
+
+## Index
+
+| ADR | Status | Decision |
+|---|---|---|
+| [0001-example-decision.md](0001-example-decision.md) | proposed | {{one-line decision summary}} |
+
+## Promotion Rule
+
+Promote a candidate into an ADR when at least one of these is true:
+
+- implementation would be materially different depending on the outcome
+- multiple reasonable options exist
+- the decision crosses module or system boundaries
+- the decision will be hard to reverse after implementation begins
+
+## Deleting An ADR
+
+If review shows an ADR never actually recorded a decision — it duplicates the ground rules, or the decision it describes is already fully specified elsewhere — delete it rather than leaving it as clutter. Note the deletion and the reason in this index or the CHANGELOG so the missing number isn't mistaken for an accident.
+
+## Retiring An ADR
+
+When an ADR is fully superseded, move its body to [../archive/](../archive/) and leave a short stub at the original path pointing to the current authority document and the archive copy. This keeps existing inbound links resolving instead of breaking, and stops a reader from mistaking a retired decision for current behavior.
+
+Update this index's `Status` column to `superseded`, linking to whatever replaced it.

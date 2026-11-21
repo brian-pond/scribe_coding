@@ -1,0 +1,39 @@
+# AGENTS.md — {{PROJECT_NAME}}
+
+This project follows **Scribe Coding** (document-driven AI development): https://datahenge.com/blog/document-driven-ai-development/
+
+## The One Rule
+
+Docs precede code. If a behavior is not described in `docs/`, it is not implemented. If a requirement is ambiguous, check `open/OPEN_QUESTIONS.md` — do not infer behavior from an unstated preference. If the question is new, add it there and ask the user before writing code.
+
+## Before Any Task
+
+1. Read `CURRENT_CONTEXT.md` first — it routes to the smallest relevant document.
+2. Consult `docs/technical/25-documentation-authority.md` to find which document owns the topic in scope.
+3. Load only the document(s) the index points to. Do not scan the full `docs/` tree by default.
+4. For non-trivial changes, state which `{{ID_PREFIX}}-*` requirement IDs the change implements before writing code.
+
+## Coding Standards
+
+Naming conventions, lint/format tooling, design patterns, and library choices live in `docs/technical/00-coding-standards.md`, not here. This section only covers requirement traceability.
+
+- Cite `{{ID_PREFIX}}-<AREA>-NNN` identifiers in docstrings and test names for every non-trivial rule.
+- Requirement IDs are internal — see `docs/requirements/README.md` for where they may and may not appear.
+- Update the relevant requirement, technical, or decision document in the same change that alters behavior, scope, or design.
+- Record consequential decisions in `docs/adr/`; lighter, easily-reversible decisions in `decisions/`.
+- Record completion judgments in `docs/technical/05-implementation-index.md`'s `Completion Judgment` column the moment they're reached — see that doc for what counts as a judgment and when to record it, including sessions with no code change.
+
+## When Something Is Ambiguous
+
+1. Check `open/OPEN_QUESTIONS.md` and `open/OPEN_DECISIONS.md` — the question may already be tracked.
+2. If unresolved, add it and ask the user. Do not implement speculative behavior while waiting for an answer.
+
+## Documentation Hygiene
+
+Follow `docs/technical/01-documentation-conventions.md` for status headers and sprawl control before creating a new Markdown document. Use `scratch/` for notes that aren't yet worth keeping. Run `tools/docs_check.py` before considering a documentation change complete.
+
+If the user asks for a "Dorwin Analysis," see `docs/technical/02-dorwin-analysis-and-hardin-version.md` and produce a Hardin Version.
+
+## Mutable Methodology
+
+Scribe Coding is a working baseline, not a fixed template. Refine it when repeated friction reveals a better pattern; note the change in `CHANGELOG.md`.

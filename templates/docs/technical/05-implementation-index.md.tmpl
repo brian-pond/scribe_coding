@@ -1,0 +1,46 @@
+---
+status: authoritative
+owner: technical
+purpose: Current implementation inventory, code locations, validation commands, and known next gaps for {{PROJECT_NAME}}.
+---
+
+# Implementation Index
+
+> Review date: {{DATE}}.
+
+This document answers "what exists in code now, where is it, how is it validated, and what remains open?" It exists to keep current implementation state out of requirements documents. Requirements own what's needed; ADRs and technical docs own architecture and rationale; this index owns inventory and navigation.
+
+This is a navigation index, not a full code audit. When a row becomes central to current work, verify the named code and tests before acting on the row alone.
+
+## Use In Clean Sessions
+
+1. Read `CURRENT_CONTEXT.md` and [technical/README.md](README.md) as needed.
+2. Read this index.
+3. Read the relevant owner document named in the `Owner Docs` column.
+4. Jump to the named code locations and validation commands.
+
+Do not add full current-implementation sections to every requirements or technical document. Add or update rows here instead.
+
+## Completion Is A Judgment, Not A Grep
+
+Whether a requirement is done cannot be proven by tooling — "log all errors" can't be verified by finding code that mentions logging. Completion is a judgment reached jointly by the user and the AI, through testing, code review, or direct discussion. This index exists so that judgment, once reached, is recorded durably — a fresh session should be able to answer "what's done, what remains?" by reading this table, not by re-auditing every requirement, code file, and test.
+
+`open/OPEN_WORK.md` intentionally sweeps `done` rows away during cleanup — it tracks the backlog, not history. This index is the durable record instead; it is never swept.
+
+## Implementation Inventory
+
+| Area | Scope | Requirement IDs | Status | Completion Judgment | Code Location | Tests / Validation | Owner Docs | Known Next Gap |
+|---|---|---|---|---|---|---|---|---|
+| {{area}} | {{scope}} | {{ID_PREFIX}}-FUN-NNN, {{ID_PREFIX}}-FUN-NNN | Planned / Partial / Implemented | {{per-ID verdict: done or remaining, how it was judged — test run, review, or discussion — and when}} | {{path}} | {{command}} | {{doc}} | {{gap}} |
+
+`Status` is a fast-scan aggregate for the area. `Completion Judgment` is the authoritative, per-requirement answer — search this column for a specific `{{ID_PREFIX}}-*` ID rather than inferring completion from `Status` alone.
+
+## Maintenance Rule
+
+Update this index before closing a task when any of the following changed:
+
+- a feature moved from planned to partial or implemented
+- code location changed
+- validation command changed
+- a next gap was closed or replaced by a new blocking gap
+- **a completion judgment was reached for a requirement ID** — via test, review, or discussion — even if no code changed in the same session. The judgment is what's durable; don't let it live only in chat history.
