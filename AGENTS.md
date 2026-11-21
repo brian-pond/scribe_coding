@@ -27,3 +27,9 @@ rm -rf /tmp/scribe_smoke_test
 ## Recording Methodology Changes
 
 When a change here reflects a new pattern rather than a fix, log it with its source in `SCRIBE_CODING.md`'s "Mutable Methodology" section — don't bake a new pattern into a template silently.
+
+## No Client or Private Project Names
+
+This repository is public. Nothing committed here may name a client, a client's project, or a private project, and nothing may include a path under `~/clients/`. When a pattern came from such a project, describe the source generically: "a client ERP implementation", "a private project". Brian Pond, Datahenge, and Brian's public projects may be named.
+
+This rule covers this repository only. It is not a template rule: projects created with Scribe Coding decide for themselves what they reference.
