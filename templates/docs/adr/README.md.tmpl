@@ -6,7 +6,7 @@ purpose: Index for architectural decision records in {{PROJECT_NAME}}.
 
 # Architectural Decision Records
 
-Use this folder for consequential decisions that need explicit rationale, considered alternatives, and consequences: choices that would be materially different under a different outcome, that cross module/system boundaries, or that are hard to reverse once implementation begins.
+Use this folder for consequential decisions: those whose cost of reversal grows with the code written against them, rather than staying flat.
 
 Lighter, easily-reversible decisions belong in [../../decisions/](../../decisions/) instead.
 
@@ -22,12 +22,19 @@ If undecided architectural questions start accumulating faster than they can be 
 
 ## Promotion Rule
 
-Promote a candidate into an ADR when at least one of these is true:
+**The test is reversal cost.** Ask what undoing this decision would cost twelve
+months into implementation:
 
-- implementation would be materially different depending on the outcome
-- multiple reasonable options exist
-- the decision crosses module or system boundaries
-- the decision will be hard to reverse after implementation begins
+- **About what making it cost now** — a configuration change, a build flag, a
+  moved folder, a swapped library behind an unchanged interface. It belongs in
+  [../../decisions/](../../decisions/).
+- **More, and growing** — because schema, stored data, code structure, or
+  vocabulary accumulate against it. It belongs here.
+
+Depth of analysis is not the test; a record in either tree may weigh alternatives
+at length. Neither is the existence of a genuine choice: nearly every decision worth
+recording had more than one plausible answer, so "multiple reasonable options exist"
+separates nothing.
 
 ## Deleting An ADR
 

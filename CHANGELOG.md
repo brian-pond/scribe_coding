@@ -2,6 +2,10 @@
 
 Dated log of changes to the Scribe Coding scaffolding itself (`templates/`, `tools/`, `SCRIBE_CODING.md`). This repo is the factory, not a stamped project — see `AGENTS.md` — so this file plays the role `docs/requirements/CHANGELOG.md` plays inside a stamped project, but for the scaffolding's own methodology and templates.
 
+## 2026-11-22
+
+- **ADR promotion rule replaced with a reversal-cost test.** `templates/docs/adr/README.md.tmpl` and `templates/decisions/README.md.tmpl` now place a decision by what undoing it would cost twelve months into implementation: about what it cost to make (a `decisions/` record) or more, and growing as schema, stored data, code structure or vocabulary accumulate against it (an ADR). The old four-bullet rule promoted a decision when "multiple reasonable options exist", which nearly every recorded decision meets, so it separated nothing; depth of analysis is likewise not the test. Sourced from a private project, whose rule a client ERP implementation's practice matches; adopted at Brian's direction when a new project stamped the old wording.
+
 ## 2026-08-16
 
 - **From a private project's review:** Added `tools/changelog_archive.py`. A changelog is append-only, so it outgrows any prose word limit as a function of project age rather than of poor editing — and the observed failure mode is that the limit gets raised whenever it binds, which makes it stop being a control at all. That project hit `docs_check.py`'s DOC002 on `CHANGELOG.md` twice in one session; the first repair was raising the allowlisted number, which was wrong. The tool moves the oldest entries verbatim into `docs/archive/CHANGELOG-archive.md`, drops headings left empty, leaves a one-line pointer, and archives to 80% of the budget (`--headroom`) rather than to the limit exactly, so the next few entries have somewhere to go. It reads the same `.docs_check_allowlist` entry `docs_check.py` does, and falls back to the same 1800-word default, so the two tools cannot disagree about a project's budget.

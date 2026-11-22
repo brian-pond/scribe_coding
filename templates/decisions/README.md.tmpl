@@ -6,7 +6,7 @@ purpose: Index for lightweight dated decisions in {{PROJECT_NAME}}.
 
 # Decisions
 
-Use short decision records for durable choices that affect design, data handling, naming, or scope, but do not need full ADR-style alternatives analysis.
+Use short decision records for durable choices that affect design, data handling, naming, or scope **and are cheap to reverse**: undoing them later costs about what making them cost now. When the cost of undoing a decision grows with the code written against it, it is an ADR; see [../docs/adr/README.md](../docs/adr/README.md), *Promotion Rule*.
 
 Pending approvals belong in [../open/OPEN_DECISIONS.md](../open/OPEN_DECISIONS.md). Once approved and implemented, promote durable decisions into a numbered record here, carrying the original ID into the new file's `origin` field so a citation made while it was open still resolves.
 
